@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+      http://www.liquibase.org/xml/ns/pro
+      http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+
+    <changeSet id="001-create-tables" author="Ahmed ABERWAG">
+        <createTable tableName="account" remarks="https://wise.com/gb/iban/france">
+            <column name="id" type="INT"><constraints primaryKey="true" /></column>
+            <column name="first_name" type="VARCHAR" />
+            <column name="last_name" type="VARCHAR" />
+            <column name="iban" type="VARCHAR(27)" />
+            <column name="bank_account_number" type="VARCHAR(11)" remarks="11 digit code for the bank account number" />
+            <column name="country_code" type="VARCHAR(2)" remarks="2 letter country code" />
+            <column name="check_digits" type="INT" remarks="2 digit check number" />
+            <column name="bank_code" type="INT" remarks="5 characters from the bank's bank code" />
+            <column name="branch_code" type="INT" remarks="5 digit code for the bank branch" />
+            <column name="national_check_digit" type="INT" remarks="2 digit code for national code" />
+            <column name="balance" type="NUMERIC(20,2)" defaultValue="0.00" />
+            <column name="created_at" type="TIMESTAMP" />
+            <column name="updated_at" type="TIMESTAMP" />
+        </createTable>
+        <createTable tableName="history">
+            <column name="id" type="INT"><constraints primaryKey="true" /></column>
+            <column name="amount" type="NUMERIC(20,2)"/>
+            <column name="operation_type" type="VARCHAR" />
+            <column name="account_id" type="INT" />
+            <column name="created_at" type="TIMESTAMP" />
+        </createTable>
+        <createSequence catalogName="cat" cycle="false"
+                        incrementBy="1" ordered="true" schemaName="public"
+                        sequenceName="hibernate_sequence" startValue="10" />
+    </changeSet>
+</databaseChangeLog>

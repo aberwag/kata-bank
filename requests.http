@@ -1,0 +1,20 @@
+###
+GET http://localhost:1337/account/1/history
+
+###
+POST http://localhost:1337/account/1/deposit
+Content-Type: application/json
+
+{
+"amount": 10.25,
+"operationType": "DEPOSIT"
+}
+
+###
+POST http://localhost:1337/account/1/withdrawal
+Content-Type: application/json
+
+{
+"amount": -10.25,
+"operationType": "WITHDRAWAL"
+}

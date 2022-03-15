@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+      http://www.liquibase.org/xml/ns/pro
+      http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+
+    <changeSet id="002-add-test-data" author="Ahmed ABERWAG">
+        <insert tableName="account">
+            <column name="id">1</column>
+            <column name="first_name">Ahmed</column>
+            <column name="last_name">ABERWAG</column>
+            <column name="iban">FR1420041010050500013M02606</column>
+            <column name="bank_account_number">0500013M026</column>
+            <column name="country_code">FR</column>
+            <column name="check_digits">14</column>
+            <column name="bank_code">20041</column>
+            <column name="branch_code">01005</column>
+            <column name="national_check_digit">06</column>
+            <column name="balance">100</column>
+        </insert>
+        <insert tableName="history">
+            <column name="id">1</column>
+            <column name="amount">100</column>
+            <column name="operation_type">DEPOSIT</column>
+            <column name="account_id">1</column>
+            <column name="created_at">2022-03-14 21:00:00.00</column>
+        </insert>
+        <insert tableName="history">
+            <column name="id">2</column>
+            <column name="amount">11.60</column>
+            <column name="operation_type">DEPOSIT</column>
+            <column name="account_id">1</column>
+            <column name="created_at">2022-03-14 21:00:00.00</column>
+        </insert>
+        <insert tableName="history">
+            <column name="id">3</column>
+            <column name="amount">-5.80</column>
+            <column name="operation_type">WITHDRAWAL</column>
+            <column name="account_id">1</column>
+            <column name="created_at">2022-03-14 21:00:00</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
